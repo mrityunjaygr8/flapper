@@ -8,13 +8,14 @@ var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var passport = require('passport');
-
+var dotenv = require('dotenv');
+dotenv.load();
 var app = express();
 
 require('./models/Users');
 require('./models/Posts');
 require('./models/Comments');
-mongoose.connect('mongodb://localhost/flapper');
+mongoose.connect(process.env.MONGODB_URI);
 
 require('./config/passport');
 
